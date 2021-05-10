@@ -14,6 +14,7 @@ local app = App(client)
 -- before you can use them. We make `assets` global so you can use it throughout your app.
 assets = {
     quit = ui.Asset.File("images/quit.png"),
+    teapot = ui.Asset.File("teapot.obj"),
 }
 app.assetManager:add(assets)
 
@@ -35,11 +36,6 @@ mainView.grabbable = true
 local button = ui.Button(ui.Bounds(0.0, 0.05, 0.05,   0.2, 0.2, 0.1))
 mainView:addSubview(button)
 
--- When user presses the button, print "hello" to the local terminal.
--- Here's where you can make the button do more fun stuff :)
-button.onActivated = function()
-    print("Hello!")
-end
 
 -- It's nice to provide a way to quit the app, too.
 -- Here's also an alternative syntax for setting the size and position of something.
@@ -53,6 +49,31 @@ mainView:addSubview(quitButton)
 
 -- Tell the app that mainView is the primary UI for this app
 app.mainView = mainView
+
+local pots = {}
+local count = 5
+for roughness = 1, count do  
+    for metalness = 1, count do
+        local pot = Asset.View(assets.teapot)
+        pot.bounds.size = Size(0.8, 0.5)
+        pot.customSpecAttributes.material = {
+            metalness = (metalness-1)/(count-1),
+            roughness = (roughness-1)/(count-1),
+        }
+        pot.color = {0.4, 0, 0.4, 1}
+        pot.bounds:scale(0.1, 0.1, 0.1)
+        pot.bounds:move(-count/2 + roughness * pot.bounds.size.width, 0.4, -(metalness-1) * pot.bounds.size.height)
+        mainView:addSubview(pot)
+        table.insert(pots, pot)
+    end
+end
+local rnd = math.random
+button.onActivated = function()
+    for _, pot in ipairs(pots) do
+        pot.color = {rnd(), rnd(), rnd()}
+        pot:updateComponents()
+    end
+end
 
 -- Connect to the designated remote Place server
 app:connect()
