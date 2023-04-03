@@ -18,8 +18,6 @@ assets = {
 }
 app.assetManager:add(assets)
 
-
-
 -- mainView is the main UI for your app. Set it up before connecting.
 -- 0, 1.2, -2 means: put the app centered horizontally; 1.2 meters up from the floor; and 2 meters into the room, depth-wise
 -- 1, 0.5, 0.01 means 1 meter wide, 0.5 meters tall, and 1 cm deep.
@@ -37,7 +35,7 @@ for roughness = 1, count do
             metalness = (metalness-1)/(count-1),
             roughness = (roughness-1)/(count-1),
         }
-        pot.color = {1, 0.84, 0, 1}
+        pot.material.color = {1, 0.84, 0, 1}
         pot.bounds:scale(0.1, 0.1, 0.1)
         pot.bounds:move(-count/2 + roughness * pot.bounds.size.width, 0, -1 -(metalness-1) * pot.bounds.size.height)
         mainView:addSubview(pot)
@@ -56,7 +54,7 @@ mainView:addSubview(button)
 local rnd = math.random
 button.onActivated = function()
     for _, pot in ipairs(pots) do
-        pot.color = {rnd(), rnd(), rnd(), 1}
+        pot.material.color = {rnd(), rnd(), rnd(), 1}
         pot:updateComponents()
     end
 end
@@ -69,7 +67,7 @@ local rnd = math.random
 button2.onActivated = function()
     local color = {rnd(), rnd(), rnd(), 1}
     for _, pot in ipairs(pots) do
-        pot.color = color
+        pot.material.color = color
         pot:updateComponents()
     end
 end
