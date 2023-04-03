@@ -9,19 +9,20 @@ Roughness represents how much the material scatters light in random directions (
 The app show a grid of teapots. The left- and front-most ones has a roughness and metallness of 0. 
 Roughness increases to the right and Metallness increases to the back
 
+```
 ^ metallness
 |
 |
 |
 |
 |______________> roughness
-
+```
 
 Pressing the button randomizes the color of all teapots. 
 
 If you are on desktop, do try this with reflections enabled in the graphics options!
 
-![Screenshot](screenshhot.png "Screenshot")
+![Screenshot](screenshot.png "Screenshot")
 
 ## Developing
 
