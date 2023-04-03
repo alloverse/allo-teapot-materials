@@ -19,8 +19,9 @@ Roughness increases to the right and Metallness increases to the back
 
 Pressing the button randomizes the color of all teapots. 
 
-
 If you are on desktop, do try this with reflections enabled in the graphics options!
+
+![Screenshot](screenshhot.png "Screenshot")
 
 ## Developing
 
