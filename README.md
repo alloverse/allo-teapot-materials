@@ -1,10 +1,26 @@
-# Alloverse app template
+# Material Teapots
 
-This is an Alloverse app. You can 
-[read about making apps](https://alloverse.com/develop-apps/)
-on Alloverse's website.
+This is a demo application of the two material properties "metalness" and "roughness"
 
-__psst, you should summarize and explain your project here!__
+Metalness represents how much the material reflects light (1), or absorbs it (0)
+
+Roughness represents how much the material scatters light in random directions (1), or reflects it perfectly (0)
+
+The app show a grid of teapots. The left- and front-most ones has a roughness and metallness of 0. 
+Roughness increases to the right and Metallness increases to the back
+
+^ metallness
+|
+|
+|
+|
+|______________> roughness
+
+
+Pressing the button randomizes the color of all teapots. 
+
+
+If you are on desktop, do try this with reflections enabled in the graphics options!
 
 ## Developing
 
